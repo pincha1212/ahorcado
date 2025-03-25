@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Ahorcado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Pantalla inicial: Login/Register -->
+    <div id="auth-forms" class="auth-section">
+        <div id="login-form">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" id="login-username" placeholder="Usuario">
+            <input type="password" id="login-password" placeholder="Contraseña">
+            <button id="btn-login">Ingresar</button>
+        </div>
+        <div id="register-form">
+            <h2>Registrarse</h2>
+            <input type="text" id="reg-username" placeholder="Usuario">
+            <input type="password" id="reg-password" placeholder="Contraseña">
+            <button id="btn-register">Crear cuenta</button>
+        </div>
+    </div>
+
+    <!-- Pantalla de configuración -->
+    <div id="modal-config" class="oculto">
+        <div id="modal-contenido">
+            <h2>¡Configuración del Juego!</h2>
+            <div id="configuracion">
+                <label for="nivel">Dificultad:</label>
+                <select id="nivel">
+                    <option value="1">Fácil 🌟</option>
+                    <option value="2">Medio 🌟🌟</option>
+                    <option value="3">Difícil 🌟🌟🌟</option>
+                </select>
+                <input type="text" id="palabra-personalizada" placeholder="Ingresa tu palabra secreta...">
+                <button id="btn-personalizar">Guardar Palabra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla principal del juego -->
+    <div id="contenedor-juego" class="oculto">
+        <!-- Tarjeta 1: Puntuación y Dificultad -->
+        <div class="card" id="card-config">
+            <div id="puntuacion">⭐ Puntos: 0</div>
+            <div id="config-dos">
+                <label for="nivel-juego">Dificultad:</label>
+                <select id="nivel-juego">
+                    <option value="1">Fácil 🌟</option>
+                    <option value="2">Medio 🌟🌟</option>
+                    <option value="3">Difícil 🌟🌟🌟</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tarjeta 2: Ilustración del Ahorcado -->
+        <div class="card" id="card-ahorcado">
+            <div id="intentos-restantes">❤️ Intentos Restantes: 6</div>
+            <svg id="ahorcado" width="300" height="350">
+                <!-- Estructura fija -->
+                <line class="estructura-fija" x1="50" y1="300" x2="150" y2="300" />
+                <line class="estructura-fija" x1="100" y1="300" x2="100" y2="50" />
+                <line class="estructura-fija" x1="100" y1="50" x2="200" y2="50" />
+                <line class="estructura-fija" x1="200" y1="50" x2="200" y2="80" />
+
+                <!-- Partes del cuerpo -->
+                <circle class="parte-cuerpo" cx="200" cy="100" r="20" />
+                <line class="parte-cuerpo" x1="200" y1="120" x2="200" y2="170" />
+                <line class="parte-cuerpo" x1="200" y1="140" x2="170" y2="130" />
+                <line class="parte-cuerpo" x1="200" y1="140" x2="230" y2="130" />
+                <line class="parte-cuerpo" x1="200" y1="170" x2="170" y2="190" />
+                <line class="parte-cuerpo" x1="200" y1="170" x2="230" y2="190" />
+            </svg>
+        </div>
+
+        <!-- Tarjeta 3: Palabra y Letras Incorrectas -->
+        <div class="card" id="card-palabra">
+            <div id="palabra"></div>
+            <div id="incorrectas">❌ Letras incorrectas: </div>
+        </div>
+
+        <!-- Tarjeta 4: Mensaje y Controles -->
+        <div class="card" id="card-mensaje">
+            <div id="mensaje">¡Adivina la palabra secreta!</div>
+            <button id="reiniciar-btn">Jugar de nuevo 🎮</button>
+        </div>
+
+        <!-- Tarjeta 5: Teclado Virtual -->
+        <div class="card" id="card-teclado">
+            <div id="teclado"></div>
+        </div>
+
+        <!-- Tarjeta 6: Leaderboard -->
+        <div class="card" id="card-leaderboard">
+            <h3>🏆 Mejores Jugadores</h3>
+            <div id="leaderboard-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+/* ==================================================================
+  1. CONFIGURACIÓN GENERAL
+================================================================== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5e7d5;
+}
+
+.auth-section,
+#modal-config,
+#contenedor-juego {
+  transition: opacity 0.3s ease;
+}
+
+.auth-section:not(.oculto) {
+  display: flex;
+}
+
+/* ==================================================================
+  2. SECCIÓN DE AUTENTICACIÓN (LOGIN/REGISTRO)
+================================================================== */
+/* Login/Registro */
+#auth-forms {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #fff; /* Fondo blanco puro */
+  border-radius: 8px; /* Bordes ligeramente redondeados */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Sombra suave */
+}
+
+#login-form,
+#register-form {
+  background: transparent; /* Fondo transparente */
+  border-radius: 0; /* Bordes cuadrados */
+  box-shadow: none; /* Sin sombra */
+  gap: 20px; /* Espaciado entre elementos */
+}
+
+/* Inputs */
+#auth-forms input {
+  padding: 12px;
+  border: 1px solid #e0e0e0; /* Borde gris claro */
+  border-radius: 4px; /* Bordes mínimamente redondeados */
+  transition: border-color 0.2s;
+}
+
+#auth-forms input:focus {
+  border-color: #9e9e9e; /* Color de enfoque gris medio */
+  outline: none;
+}
+
+/* Botones */
+#auth-forms button {
+  padding: 12px 24px;
+  background: #2c3e50; /* Azul oscuro neutro */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background 0.2s;
+  margin-top: 15px; /* Espacio superior */
+}
+
+#auth-forms button:hover {
+  background: #34495e; /* Sutil cambio al pasar el mouse */
+}
+
+/* Textos */
+#auth-forms h2 {
+  color: #333; /* Negro oscuro */
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Estilo general de campos */
+#auth-forms label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666; /* Gris medio */
+  font-weight: 500;
+}
+
+/* Respuesta a pantallas pequeñas */
+@media (max-width: 600px) {
+  #auth-forms {
+    padding: 25px;
+    margin: 30px auto;
+  }
+}
+
+/* ==================================================================
+  3. MODAL DE CONFIGURACIÓN
+================================================================== */
+/* MODAL DE CONFIGURACIÓN - ESTILO MINIMALISTA */
+#modal-config {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* Opacidad ligeramente reducida */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#modal-contenido {
+  background: #f8f9fa; /* Blanco neutro */
+  padding: 25px; /* Espacio interno ajustado */
+  border-radius: 8px; /* Bordes más cuadrados */
+  text-align: left; /* Alineación a la izquierda para un look profesional */
+  max-width: 350px;
+  width: 90%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+#modal-contenido h2 {
+  margin: 0 0 15px; /* Espaciado inferior */
+  color: #2c3e50; /* Azul oscuro neutro */
+  font-weight: 600;
+}
+
+#configuracion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espaciado uniforme entre elementos */
+}
+
+/* Elementos de configuración */
+#configuracion label {
+  color: #333; /* Gris oscuro */
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+#configuracion select,
+#configuracion input,
+#configuracion button {
+  width: 100%;
+  padding: 8px; /* Espacio interno reducido */
+  border: 1px solid #e0e0e0; /* Borde gris claro */
+  border-radius: 4px; /* Bordes mínimos */
+  font-size: 14px; /* Tamaño de fuente uniforme */
+  transition: border-color 0.2s;
+}
+
+/* Estilos específicos */
+#configuracion select,
+#configuracion input {
+  background: #fff; /* Blanco puro */
+}
+
+#configuracion select:focus,
+#configuracion input:focus {
+  border-color: #2c3e50; /* Resaltado azul oscuro */
+  outline: none;
+}
+
+#configuracion button {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#configuracion button:hover {
+  background: #213b51; /* Sutil oscurecimiento */
+}
+
+/* ==================================================================
+  4. INTERFAZ DEL JUEGO
+================================================================== */
+/* INTERFAZ DEL JUEGO - ESTILO MINIMALISTA */
+.oculto {
+  display: none !important;
+}
+
+#contenedor-juego {
+  max-width: 800px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px; /* Espaciado mayor entre tarjetas */
+  padding: 30px; /* Relleno interno aumentado */
+  background: #f8f9fa; /* Fondo neutro */
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px; /* Bordes más cuadrados */
+  padding: 20px; /* Espacio interno ajustado */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Sombra suave */
+  text-align: left; /* Alineación a la izquierda */
+}
+
+/* Elementos de puntuación y configuración */
+#puntuacion {
+  font-size: 1.1em; /* Tamaño de fuente reducido */
+  color: #333;
+  margin-bottom: 15px;
+}
+
+#config-dos,
+#nivel,
+#palabra-personalizada,
+#nivel-juego {
+  padding: 6px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+}
+
+/* Ahorcado y palabra */
+#ahorcado {
+  margin: 0 auto;
+  stroke: #333; /* Color gris oscuro */
+  stroke-width: 2;
+  fill: none;
+}
+
+#palabra {
+  font-size: 2.2em; /* Mayor legibilidad */
+  letter-spacing: 12px;
+  color: #4a4a4a;
+  margin: 25px 0;
+}
+
+#incorrectas {
+  font-size: 1.1em;
+  color: #e74c3c; /* Rojo vibrante pero claro */
+  margin-bottom: 15px;
+}
+
+/* Teclado */
+#teclado {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Ajuste flexible */
+  gap: 10px;
+  padding: 15px;
+}
+
+.letra-btn {
+  padding: 12px;
+  font-size: 1em;
+  cursor: pointer;
+  background: #e0e0e0; /* Gris claro */
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.letra-btn:hover {
+  background: #d1d1d1;
+}
+
+.letra-btn:disabled {
+  background: #f0f0f0;
+  color: #9e9e9e;
+}
+
+/* Mensajes y controles */
+#mensaje {
+  font-size: 1.4em;
+  color: #2c3e50; /* Azul oscuro neutro */
+  margin-bottom: 20px;
+}
+
+#reiniciar-btn {
+  padding: 12px 24px;
+  font-size: 1em;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 20px;
+  transition: background 0.2s;
+}
+
+#reiniciar-btn:hover {
+  background: #213b51;
+}
+
+#intentos-restantes {
+  font-size: 1.1em;
+  color: #666;
+  margin-top: 15px;
+}
+
+/* ==================================================================
+  5. MEDIA QUERIES (RESPONSIVIDAD)
+================================================================== */
+@media (max-width: 600px) {
+  #teclado {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==================================================================
+  6. LEADERBOARD (PUNTAJES)
+================================================================== */
+.user-highlight {
+  background-color: #e3f2fd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.user-score {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leaderboard-entry {
+  display: flex;
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.leaderboard-entry.current-user {
+  background-color: #fff8e1;
+}
+
+.rank {
+  width: 30px;
+  color: #666;
+}
+
+.username {
+  flex-grow: 1;
+  font-weight: bold;
+}
+
+.score {
+  width: 100px;
+  text-align: right;
+}
+
+.current-user {
+  background-color: #fffde7;
+  font-weight: bold;
+  border-left: 4px solid #ffc107;
+}
+
+.current-user .username {
+  color: #ff6d00;
+}
+
+#current-user-score {
+  background-color: #e3f2fd;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
