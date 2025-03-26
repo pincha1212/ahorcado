@@ -24,7 +24,6 @@ body {
 /* ==================================================================
   2. SECCIÓN DE AUTENTICACIÓN (LOGIN/REGISTRO)
 ================================================================== */
-/* Contenedor principal */
 #auth-forms {
   max-width: 400px;
   background: #fff3e0;
@@ -37,6 +36,13 @@ body {
 }
 
 /* Formularios ocultos inicialmente */
+  border: 3px dashed #d4a067;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: center;
+}
+
 #login-form,
 #register-form {
   padding: 5px;
@@ -44,16 +50,13 @@ body {
   border: 1px solid #d4a067;
   border-radius: 10px;
   margin: 20px 0;
-  display: none;
 }
 
-/* Formulario activo */
 #login-form.active,
 #register-form.active {
   display: block;
 }
 
-/* Títulos */
 h2 {
   color: #6f4e37;
   font-size: 28px;
@@ -61,7 +64,8 @@ h2 {
   text-shadow: 1px 1px #f5e6c3;
 }
 
-/* Campos de entrada */
+
+/* Inputs */
 input {
   width: 85%;
   padding: 12px;
@@ -95,16 +99,6 @@ button:hover {
   background: #e5c08e;
 }
 
-/* Botones de toggle */
-.toggle-btns {
-  justify-content: space-around;
-  margin: 20px 0;
-  background: #fff3e0;
-  border: 1px solid #d4a067;
-  border-radius: 15px;
-  padding: 10px;
-}
-
 .toggle-btn {
   flex-direction: column;
   align-items: center;
@@ -123,7 +117,8 @@ button:hover {
   color: #fff3e0;
 }
 
-/* Efecto de borde exterior */
+
+/* Estilo general de campos */
 #auth-forms::before {
   content: '';
   position: absolute;
@@ -136,7 +131,15 @@ button:hover {
   pointer-events: none;
 }
 
-/* Responsive */
+#auth-forms label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  /* Gris medio */
+  font-weight: 500;
+}
+
+/* Respuesta a pantallas pequeñas */
 @media (max-width: 600px) {
   #auth-forms {
     max-width: 320px;
@@ -200,11 +203,12 @@ button:hover {
   padding: 0 20px;
 }
 
+/* Elementos de configuración */
+
 #configuracion select,
 #configuracion input,
 #configuracion button {
   padding: 12px;
-
   box-sizing: border-box;
   transition: box-shadow 0.3s;
 }
@@ -214,7 +218,6 @@ button:hover {
   background-position: right 10px center;
   background-color: #fff3e0;
   padding-right: 30px;
-  /* Espacio para el icono del select */
 }
 
 #configuracion label {
@@ -222,6 +225,21 @@ button:hover {
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
+}
+
+#configuracion button {
+  width: 100%;
+  background: #d4a067 !important;
+  color: #fff3e0 !important;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 15px;
+}
+
+#configuracion button:hover {
+  background: #e5c08e !important;
 }
 
 #configuracion select,
@@ -241,21 +259,6 @@ button:hover {
   outline: none;
 }
 
-#configuracion button {
-  width: 100%;
-  background: #d4a067;
-  color: #fff3e0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-  margin-top: 15px;
-}
-
-#configuracion button:hover {
-  background: #e5c08e;
-}
-
 /* ==================================================================
   4. INTERFAZ DEL JUEGO 
 ================================================================== */
@@ -265,16 +268,27 @@ button:hover {
 
 #contenedor-juego {
   max-width: 800px;
-  margin: 40px auto;
+  margin: 50px auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+  gap: 30px;
   padding: 30px;
-  background: linear-gradient(45deg, #e0f2f1, #d1e7dd);
-  /* Fondo verde claro */
+  background: #fff3e0;
+  border: 3px dashed #d4a067;
   border-radius: 20px;
-  /* Bordes redondeados */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+#contenedor-juego::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  right: -18px;
+  bottom: -18px;
+  border: 2px dashed #d4a067;
+  border-radius: 25px;
+  pointer-events: none;
 }
 
 .card {
@@ -286,16 +300,6 @@ button:hover {
   position: relative;
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border: 1px dashed #d4a067;
-  border-radius: 18px;
-}
 
 
 /* Elementos de puntuación y configuración */
@@ -353,6 +357,21 @@ button:hover {
   padding: 15px;
 }
 
+#ahorcado .parte-cuerpo {
+  stroke-dasharray: 0;
+  transition: stroke-dasharray 0.3s;
+}
+
+#ahorcado .parte-cuerpo.show {
+  stroke-dasharray: 100;
+}
+
+
+.card#card-palabra {
+  text-align: center;
+  padding: 15px;
+}
+
 #palabra {
   font-size: 36px;
   letter-spacing: 5px;
@@ -370,7 +389,6 @@ button:hover {
   box-sizing: border-box;
 }
 
-
 #palabra span {
   padding: 8px;
   background: #fff3e0;
@@ -385,6 +403,8 @@ button:hover {
   margin-top: 20px;
 }
 
+
+
 /* Teclado */
 #teclado {
   display: grid;
@@ -392,15 +412,12 @@ button:hover {
   gap: 15px;
   padding: 20px;
   background: #fff3e0;
-  /* Blanco papel */
   border: 2px dashed #d4a067;
-  /* Borde deshilachado */
   border-radius: 15px;
   position: relative;
   text-align: center;
 }
 
-/* Efecto de borde exterior */
 #teclado::before {
   content: '';
   position: absolute;
@@ -413,44 +430,33 @@ button:hover {
   pointer-events: none;
 }
 
-/* Botones de teclado */
 .letra-btn {
   padding: 12px;
   font-size: 1em;
   cursor: pointer;
   background: #fff3e0;
-  /* Fondo papel */
   color: #6f4e37;
-  /* Texto marrón oscuro */
   border: 1px dashed #d4a067;
-  /* Borde deshilachado */
   border-radius: 30px;
   transition: all 0.3s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Efecto hover */
+
 .letra-btn:hover {
   background: #fff3e0;
-  /* Sigue siendo papel */
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   border-color: #d4a067;
-  /* Resalta el borde */
 }
 
-/* Botones deshabilitados */
 .letra-btn:disabled {
   background: #f5e6c3;
-  /* Tono amarillento opaco */
   color: #9e9e9e;
-  /* Gris claro */
   border-color: #d4a067;
-  /* Mantiene el borde */
   cursor: not-allowed;
 }
 
-/* Efecto de relieve en botones presionados */
 .letra-btn:active {
   transform: translateY(0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -466,77 +472,12 @@ button:hover {
 }
 
 
-#reiniciar-btn {
-  padding: 14px 30px;
-  font-size: 1em;
-  background: #4CAF50;
-  /* Verde vivo */
-  color: white;
-  border: none;
-  border-radius: 30px;
-  margin-top: 25px;
-  transition: all 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#reiniciar-btn:hover {
-  background: #3e8e41;
-  transform: translateY(-2px);
-}
 
 #intentos-restantes {
   font-size: 1.1em;
   color: #666;
   margin-top: 15px;
   font-weight: 500;
-}
-
-#contenedor-juego {
-  max-width: 800px;
-  margin: 50px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 30px;
-  background: #fff3e0;
-  /* Fondo papel */
-  border: 3px dashed #d4a067;
-  /* Borde deshilachado */
-  border-radius: 20px;
-  position: relative;
-}
-
-#contenedor-juego::before {
-  content: '';
-  position: absolute;
-  top: -18px;
-  left: -18px;
-  right: -18px;
-  bottom: -18px;
-  border: 2px dashed #d4a067;
-  border-radius: 25px;
-  pointer-events: none;
-}
-
-.card:first-child {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-
-/* Efecto de sombra suave en tarjetas */
-.card:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-/* Detalles del ahorcado */
-#ahorcado .parte-cuerpo {
-  stroke: #2c6d4f;
-  /* Trazos verdes */
-  transition: stroke-dasharray 0.3s;
-}
-
-#ahorcado .parte-cuerpo.show {
-  stroke-dasharray: 100;
 }
 
 /* ==================================================================
@@ -554,6 +495,10 @@ button:hover {
 }
 
 @media (max-width: 600px) {
+  #contenedor-juego {
+    grid-template-columns: 1fr;
+  }
+
   #teclado {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -564,7 +509,6 @@ button:hover {
 ================================================================== */
 .user-highlight {
   background: linear-gradient(45deg, #e0f2f1, #d1e7dd);
-  /* Gradiente de hojas */
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 15px;
@@ -572,6 +516,7 @@ button:hover {
   font-weight: 500;
   text-align: center;
 }
+
 
 .user-score {
   display: flex;
@@ -584,21 +529,15 @@ button:hover {
   display: flex;
   padding: 18px 24px;
   border-radius: 15px;
-  /* Bordes redondeados */
   margin-bottom: 8px;
   background: #fff;
-  /* Fondo blanco puro */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  /* Sombra sutil */
 }
 
 .leaderboard-entry.current-user {
   background: #fffde7;
-  /* Tono amarillo claro */
   border-left: 4px solid #f1c40f;
-  /* Línea dorada */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  /* Sombra pronunciada */
 }
 
 .rank {
@@ -612,7 +551,6 @@ button:hover {
   flex-grow: 1;
   font-weight: 600;
   color: #2c6d4f;
-  /* Verde oscuro */
   margin: 0 16px;
 }
 
@@ -620,23 +558,19 @@ button:hover {
   width: 120px;
   text-align: right;
   color: #e74c3c;
-  /* Rojo vibrante */
   font-weight: 600;
 }
 
 .current-user .username {
   color: #e77900;
-  /* Naranja oscuro */
 }
 
 .current-user .score {
   color: #e74c3c;
-  /* Resaltado en rojo */
 }
 
 #current-user-score {
   background: #f0f8e7;
-  /* Tono de hoja */
   padding: 18px;
   margin-bottom: 20px;
   border-radius: 15px;
@@ -645,13 +579,11 @@ button:hover {
   color: #2c6d4f;
 }
 
-/* Efecto hover sutil */
 .leaderboard-entry:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilos globales */
 .leaderboard-entry:first-child {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
