@@ -153,7 +153,6 @@ function terminarJuego(ganado) {
 
 /* ----------------------- Autenticación ----------------------- */
 
-// Agregar esto en la sección de Event Listeners
 document.getElementById('btn-register').addEventListener('click', async () => {
 
     const username = document.getElementById('reg-username').value;
@@ -346,3 +345,29 @@ document.addEventListener('DOMContentLoaded', () => {
         inicializarJuego();
     });
 });
+
+// Función para mostrar/ocultar formularios
+function toggleForm(targetForm, btn) {
+    // Ocultar formulario actual
+    document.querySelector('.auth-section > div.active').classList.remove('active');
+
+    // Mostrar formulario seleccionado
+    document.getElementById(targetForm).classList.add('active');
+
+    // Actualizar botones
+    document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+// Eventos para los botones
+document.getElementById('btn-login-toggle').addEventListener('click', function () {
+    toggleForm('login-form', this);
+});
+
+document.getElementById('btn-register-toggle').addEventListener('click', function () {
+    toggleForm('register-form', this);
+});
+
+// Estado inicial
+document.getElementById('login-form').classList.add('active');
+document.getElementById('btn-login-toggle').classList.add('active');
