@@ -36,6 +36,10 @@ body {
 }
 
 /* Formularios ocultos inicialmente */
+#auth-forms {
+  max-width: 400px;
+  background: #fff3e0;
+  padding: 30px;
   border: 3px dashed #d4a067;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
